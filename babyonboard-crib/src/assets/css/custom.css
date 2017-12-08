@@ -24,10 +24,6 @@
   background-color: #f7d9d4;
 }
 
-.card-color-test {
-  background-color: blue;
-}
-
 .card-icon {
   position: relative;
   top: -3vh;
@@ -61,6 +57,11 @@
 }
 
 .button-like:hover {
+  border-color: #f26d7d;
+  border-width: thick;
+}
+
+.button-like-fixed{
   border-color: #f26d7d;
   border-width: thick;
 }

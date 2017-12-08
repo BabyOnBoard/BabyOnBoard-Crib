@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
 
   private interval = 5000;;
   private endpoint_m = 'movement/';
+  private move_time: number;
   private ip: string;
+
   private url;
 
   private results_m = {};
@@ -33,7 +35,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService:APIService) {
 
     this.move = Move.none;
-
+    this.move_time = 1;
     this.ip = window.location.hostname;
     this.url = 'http://' + this.ip + ':8000/api/v1/';
   }
@@ -66,21 +68,21 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onSubmitFrontMove(value: string): void {
-    this.apiService.setMovement(this.url+this.endpoint_m, value, 'front')
+  onSubmitFrontMove(): void {
+    this.apiService.setMovement(this.url+this.endpoint_m, this.move_time, 'front')
     this.move = Move.front_move;
-    console.log('front move ativado por ' + value + ' minutos.');
+    console.log('front move ativado por ' + this.move_time + ' minutos.');
   }
 
-  onSubmitSideMove(value: string): void {
-    this.apiService.setMovement(this.url+this.endpoint_m, value, 'side')
+  onSubmitSideMove(): void {
+    this.apiService.setMovement(this.url+this.endpoint_m, this.move_time, 'side')
     this.move = Move.side_move;
-    console.log('side move ativado por ' + value + ' minutos.');
+    console.log('side move ativado por ' + this.move_time + ' minutos.');
   }
 
-  onSubmitVibrate(value: string): void {
-    this.apiService.setMovement(this.url+this.endpoint_m, value, 'vibration')
+  onSubmitVibrate(): void {
+    this.apiService.setMovement(this.url+this.endpoint_m, this.move_time, 'vibration')
     this.move = Move.vibrate;
-    console.log('vibrar ativado por ' + value + ' minutos.');
+    console.log('vibrar ativado por ' + this.move_time + ' minutos.');
   }
 }

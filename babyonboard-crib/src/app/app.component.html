@@ -8,10 +8,10 @@
   </nav>
 
 
-<!-- INFORMAÇÕES -->
+<!-- MOVIMENTOS PARA SELECIONAR -->
   <div class="bd-example">
     <div class="row">
-      <div class="col-md-4 card-padding" *ngIf="this.move == Move.none" data-toggle="modal" data-target="#modal_X">
+      <div class="col-md-4 card-padding" *ngIf="this.move == Move.none" (ngSubmit)="this.onSubmitFrontMove()" (click)="this.onSubmitFrontMove()">
         <div class="card card-color rounded button-like" >
           <div class="card-icon">
               <img  src="assets/img/icone_moving_crib.png" class="icon_size">
@@ -20,17 +20,7 @@
         </div>
       </div>
 
-      <div class="col-md-4 card-padding" *ngIf="this.move == Move.front_move">
-        <div class="card card-color-test rounded button-like" >
-          <div class="card-icon">
-              <img  src="assets/img/icone_moving_crib.png" class="icon_size"  > <!--(ngSubmit)="this.onSubmitCancel()" (click)="this.onSubmitCancel()"-->
-          </div>
-          <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_X.png">
-        </div>
-      </div>
-
-
-      <div class="col-md-4 card-padding" *ngIf="this.move == Move.none" data-toggle="modal" data-target="#modal_Y">
+      <div class="col-md-4 card-padding" *ngIf="this.move == Move.none" (ngSubmit)="this.onSubmitSideMove()" (click)="this.onSubmitSideMove()">
         <div class="card card-color rounded button-like" >
           <div class="card-icon">
             <img  src="assets/img/icone_moving_crib.png" class="icon_size">
@@ -39,18 +29,7 @@
         </div>
       </div>
 
-      <div class="col-md-4 card-padding" *ngIf="this.move == Move.side_move">
-        <div class="card card-color rounded button-like" >
-          <div class="card-icon">
-              <img  src="assets/img/icone_moving_crib.png" class="icon_size"  >
-          </div>
-          <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_Z.png">
-        </div>
-      </div>
-
-
-
-      <div class="col-md-4 card-padding" *ngIf="this.move == Move.none" data-toggle="modal" data-target="#modal_V">
+      <div class="col-md-4 card-padding" *ngIf="this.move == Move.none" (ngSubmit)="this.onSubmitVibrate()" (click)="this.onSubmitVibrate()">
         <div class="card card-color rounded button-like" >
           <div class="card-icon">
             <img  src="assets/img/icone_moving_crib.png" class="icon_size" >
@@ -59,8 +38,59 @@
         </div>
       </div>
 
+<!-- MOVIMENTOS QUANDO SELECIONADO -->
+
+<!----------------------->
+
+      <div class="col-md-4 card-padding" *ngIf="this.move == Move.front_move">
+        <div class="card card-color rounded button-like-fixed" >
+          <div class="card-icon">
+            <img  src="assets/img/icone_moving_crib.png" class="icon_size"  >
+          </div>
+          <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_X.png">
+        </div>
+      </div>
+
+      <div class="col-md-4 card-padding" *ngIf="this.move != Move.front_move && this.move != Move.none">
+        <div class="card card-color rounded" >
+          <div class="card-icon">
+            <img  src="assets/img/icone_moving_crib.png" class="icon_size"  >
+          </div>
+          <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_X.png">
+        </div>
+      </div>
+<!----------------------->
+
+      <div class="col-md-4 card-padding" *ngIf="this.move == Move.side_move">
+        <div class="card card-color rounded button-like-fixed" >
+          <div class="card-icon">
+              <img  src="assets/img/icone_moving_crib.png" class="icon_size"  >
+          </div>
+          <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_Z.png">
+        </div>
+      </div>
+
+      <div class="col-md-4 card-padding" *ngIf="this.move != Move.side_move && this.move != Move.none">
+        <div class="card card-color rounded " >
+          <div class="card-icon">
+              <img  src="assets/img/icone_moving_crib.png" class="icon_size"  >
+          </div>
+          <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_Z.png">
+        </div>
+      </div>
+
+<!----------------------->
     <div class="col-md-4 card-padding" *ngIf="this.move == Move.vibrate">
-      <div class="card card-color rounded button-like" >
+      <div class="card card-color rounded button-like-fixed" >
+        <div class="card-icon">
+            <img  src="assets/img/icone_moving_crib.png" class="icon_size" >
+        </div>
+        <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_vibrate.png">
+      </div>
+    </div>
+
+    <div class="col-md-4 card-padding" *ngIf="this.move != Move.vibrate && this.move != Move.none">
+      <div class="card card-color rounded " >
         <div class="card-icon">
             <img  src="assets/img/icone_moving_crib.png" class="icon_size" >
         </div>
@@ -70,73 +100,6 @@
 
     </div>
   </div>
-
-  <!-- Modal -->
-    <div class="modal fade" id = "modal_X" aria-labelledby="modal_X" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ninar berço!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <div class="form-group">
-                <label for="recipient-name" class="form-control-label">Quantos Minutos?</label>
-                <input type="text" id="minutes" class="form-control " name="minutes" [(ngModel)]="query" (ngSubmit)="this.onSubmitFrontMove(query)" (keyup.enter)="this.onSubmitFrontMove(query)">
-                <button type="submit" class="btn btn-primary" (click)="this.onSubmitFrontMove(query)" data-dismiss="modal">Ninar!</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Modal -->
-      <div class="modal fade" id="modal_Y" aria-labelledby="modal_Y" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-sm" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ninar berço!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                  <label for="recipient-name" class="form-control-label">Quantos Minutos?</label>
-                  <input type="text" id="minutes" class="form-control " name="minutes" [(ngModel)]="query" (ngSubmit)="this.onSubmitSideMove(query)" (keyup.enter)="this.onSubmitSideMove(query)">
-                  <button type="submit" class="btn btn-primary" (click)="this.onSubmitSideMove(query)" data-dismiss="modal">Ninar!</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal -->
-        <div class="modal fade" id="modal_V" aria-labelledby="modal_V" tabindex="-1" role="dialog">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ninar berço!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                  <div class="form-group">
-                    <label for="recipient-name" class="form-control-label">Quantos Minutos?</label>
-                    <input type="text" id="minutes" class="form-control " name="minutes" [(ngModel)]="query" (ngSubmit)="this.onSubmitVibrate(query)" (keyup.enter)="this.onSubmitVibrate(query)">
-                    <button type="submit" class="btn btn-primary" (click)="this.onSubmitVibrate(query)" data-dismiss="modal">Ninar!</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
 
   <!--img src="assets/img/logo.png" class="fixo-baixo"-->
