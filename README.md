@@ -30,6 +30,6 @@ and replace the scr folder with the one on this repository.
 
 ## The app
 
-The Baby on Board Crib app is intended to run alongside the Baby on Board API (https://github.com/BabyOnBoard/BabyOnBoard-API}{https://github.com/BabyOnBoard/BabyOnBoard-API). It communicates with it by HTTP protocol requirements. 
+The Baby on Board Crib app is intended to run alongside the Baby on Board API (https://github.com/BabyOnBoard/BabyOnBoard-API). It communicates with it by HTTP protocol requirements. 
 
 Its purpose is to  allow the user to pick a movement for the baby-crib to perform so the baby can sleep. It is what it's shown on the baby-crib's touch screen.
